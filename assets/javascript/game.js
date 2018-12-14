@@ -14,4 +14,6 @@ document.onkeyup = function(event) {
     var userGuess = event.key;
 
     computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+        
 }
