@@ -5,3 +5,13 @@ var wins;
 var losses;
 var guesses;
 var lettersGuessed;
+
+var w = document.getElementById("win");
+var l = document.getElementById("loss");
+var g = document.getElementById("guess");
+
+document.onkeyup = function(event) {
+    var userGuess = event.key;
+
+    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+}
