@@ -1,4 +1,4 @@
-
+// $(document).ready(function(){
 
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
@@ -6,7 +6,7 @@ var computerGuess;
 var wins = 0;
 var losses = 0;
 var guesses = 9;
-var lettersGuessed = "";
+var lettersGuessed = [];
 
 var w = document.getElementById("wins");
 var l = document.getElementById("losses");
@@ -20,23 +20,29 @@ document.onkeyup = function(event) {
 
     console.log (computerGuess);
 
-    if(userGuess == computerGuess){
-        alert("User Guess: " + userGuess + " was correct");
+    if(userGuess != computerGuess) { 
+        alert('Wrong! You have '+ guesses+ ' guesses left');
+        guesses--;
+        lettersGuessed.push(userGuess);
+    } 
+    else { 
+        alert('You won! Game will reset on next key press');
         wins++;
-    }
+        guesses = 9;
+        lettersGuessed = [];
+    } 
 
-    else{
-        if(guesses > 0){
-            guesses--;
-            alert("Incorrect choice. Guesses left: " + guesses + ". Try again.");
-        }
-
-        else{
-            alert("Game Over. Please Refresh the page to try again.");
-        }
-    }
+    if (guessesLeft == 0) {
+        alert('Sorry, you lost. Game will reset on next key press');
+            losses++;
+            guesses = 9;
+        lettersGuessed = [];
+    } 
 
     w.textContent = ("wins: " + wins);
     l.textContent = ("losses: " + losses);
     g.textContent = ("guesses left: " + guesses);
+    u.textContent = ("Your guesses so far: " + userGuess);
+
+    
 }
